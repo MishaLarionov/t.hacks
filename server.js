@@ -1,9 +1,27 @@
+var Client = require('node-wolfram');
+var Wolfram = new Client(process.env.WOLFRAM_KEY);
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 
 var restclient = require('node-rest-client').Client;
 restclient = new restclient();
+
+function getCoords(input) {
+  return Wolfram.query(input + " coordinates", function(err, result) {
+    if(err)
+      console.log(err);
+    else {
+      for(var a=0; a<result.queryresult.pod.length; a++) {
+        var pod = result.queryresult.pod[a];
+        if (pod.$.title == "Result") {
+          return pod.subpod.plaintext;
+        }
+      }
+    }
+  });
+}
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
