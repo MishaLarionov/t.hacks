@@ -12,6 +12,6 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 app.post('/where', function(req, res) {
-  location = req.body.where;
+  var location = req.body.where;
 });
 app.use(express.static(__dirname + '/public'));
