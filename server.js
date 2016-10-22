@@ -19,6 +19,7 @@ function getCoords(input) {
     if (err)
       console.log(err);
     else {
+      console.log(result.queryresult);
       if (result.queryresult.didyoumeans) {
         console.log("Did you mean: " + result.queryresult.didyoumeans.didyoumean.replace(' coordinates',''));
       } else {
@@ -58,7 +59,7 @@ function getCoords(input) {
             var id = Math.floor(Math.random() * 100);
             Jimp.read(blueChannel, function (err, image) {
               image.resize(1280, 720);
-              res.write(image);
+              res.write(image.getBuffer(Jimp.MIME_JPEG));
             });
           }
         }
