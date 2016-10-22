@@ -1,2 +1,2 @@
 # t.hacks
-Project for t.hacks 2016
+T.Hacks hackathon project

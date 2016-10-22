@@ -1,0 +1,25 @@
+{
+  "name": "satimage",
+  "version": "1.0.0",
+  "description": "Wallpaper download tool for satellite imagery",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ncarr/t.hacks.git"
+  },
+  "author": "M9DT",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ncarr/t.hacks/issues"
+  },
+  "homepage": "https://github.com/ncarr/t.hacks#readme",
+  "dependencies": {
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "node-rest-client": "^2.0.1"
+  }
+}
