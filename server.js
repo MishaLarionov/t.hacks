@@ -1,6 +1,8 @@
 var Client = require('node-wolfram');
 var Wolfram = new Client(process.env.WOLFRAM_KEY);
 
+var request = require('request').defaults({ encoding: null })
+
 var jpeg = require('jpeg-js');
 
 var express = require('express');

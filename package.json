@@ -25,6 +25,7 @@
     "express": "^4.14.0",
     "node-rest-client": "^2.0.1",
     "node-wolfram": "^0.0.1",
-    "jpeg-js": "^0.2.0"
+    "jpeg-js": "^0.2.0",
+    "request": "^2.75.0"
   }
 }
