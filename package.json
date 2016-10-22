@@ -4,7 +4,7 @@
   "description": "Wallpaper download tool for satellite imagery",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node test.js",
     "start": "node server.js"
   },
   "repository": {
@@ -19,9 +19,13 @@
   "homepage": "https://github.com/ncarr/t.hacks#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
+    "jimp": "^0.2.27",
+    "jpeg-js": "^0.2.0",
     "node-rest-client": "^2.0.1",
-    "node-wolfram": "^0.0.1"
+    "node-wolfram": "^0.0.1",
+    "request": "^2.75.0"
   }
 }
