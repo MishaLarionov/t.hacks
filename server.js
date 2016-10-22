@@ -19,6 +19,7 @@ function getCoords(input) {
     if (err)
       console.log(err);
     else {
+      console.log(result.queryresult);
       if (result.queryresult.didyoumeans) {
         console.log("Did you mean: " + result.queryresult.didyoumeans.didyoumean.replace(' coordinates',''));
       } else {
@@ -46,6 +47,8 @@ function getCoords(input) {
             }
             formattedcoords = formattedcoords.toString();
             console.log(formattedcoords);
+            res.write("https://maps.googleapis.com/maps/api/staticmap?center=" + input + "&zoom=14&size=1280x720&maptype=satellite&key=" + process.env.GOOGLE_KEY)
+            /*
             var redChannel, greenChannel, blueChannel;
             restclient.get("https://api.skywatch.co/data/time/2016/location/" + formattedcoords + "/source/landsat-8/level/1/cloudcover/5/band/green", {headers: {"x-api-key": process.env.SKYWATCH_KEY}}, function (data, response) {
               console.log(data);
@@ -58,8 +61,8 @@ function getCoords(input) {
             var id = Math.floor(Math.random() * 100);
             Jimp.read(blueChannel, function (err, image) {
               image.resize(1280, 720);
-              res.write(image);
-            });
+              res.write(image.getBuffer(Jimp.MIME_JPEG));
+            }); */
           }
         }
       }
