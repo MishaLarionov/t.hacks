@@ -46,23 +46,7 @@ function getCoords(input) {
             formattedcoords = formattedcoords.toString();
             console.log(formattedcoords);
             var redChannel, greenChannel, blueChannel;
-            restclient.get("https://api.skywatch.co/data/time/2016-07/location/" + formattedcoords + "/source/landsat-8/level/3/cloudcover/0/band/red", {headers: {"x-api-key": process.env.SKYWATCH_KEY}}, function (data, response) {
-              console.log(data);
-              request.get(data[0].download_path, function (error, response, body) {
-                if (!error && response.statusCode == 200) {
-                  redChannel = new Buffer(body);
-                }
-              });
-            });
-            restclient.get("https://api.skywatch.co/data/time/2016-07/location/" + formattedcoords + "/source/landsat-8/level/3/cloudcover/0/band/green", {headers: {"x-api-key": process.env.SKYWATCH_KEY}}, function (data, response) {
-              console.log(data);
-              request.get(data[0].download_path, function (error, response, body) {
-                if (!error && response.statusCode == 200) {
-                  greenChannel = new Buffer(body);
-                }
-              });
-            });
-            restclient.get("https://api.skywatch.co/data/time/2016-07/location/" + formattedcoords + "/source/landsat-8/level/3/cloudcover/0/band/blue", {headers: {"x-api-key": process.env.SKYWATCH_KEY}}, function (data, response) {
+            restclient.get("https://api.skywatch.co/data/time/2016-07/location/" + formattedcoords + "/source/landsat-8/level/3/cloudcover/0/band/panchromatic", {headers: {"x-api-key": process.env.SKYWATCH_KEY}}, function (data, response) {
               console.log(data);
               request.get(data[0].download_path, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
@@ -70,6 +54,7 @@ function getCoords(input) {
                 }
               });
             });
+            /*
             var id = Math.floor(Math.random() * 100);
             Jimp.read(redChannel, function (err, image) {
               image.resize(1280, 720);
@@ -85,9 +70,10 @@ function getCoords(input) {
             });
             for (var x = 0; x < 1280; x++) {
               for (var y = 0; y < 720; y++) {
-                
+
               }
             }
+            */
           }
         }
       }
