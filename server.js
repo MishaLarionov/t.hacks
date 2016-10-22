@@ -55,26 +55,11 @@ function getCoords(input) {
                 }
               });
             });
-            /*
             var id = Math.floor(Math.random() * 100);
-            Jimp.read(redChannel, function (err, image) {
-              image.resize(1280, 720);
-              image.write(toString(id) + "red.jpg";
-            });
-            Jimp.read(greenChannel, function (err, image) {
-              image.resize(1280, 720);
-              image.write(toString(id) + "green.jpg";
-            });
             Jimp.read(blueChannel, function (err, image) {
               image.resize(1280, 720);
-              image.write(toString(id) + "blue.jpg";
+              res.write(image);
             });
-            for (var x = 0; x < 1280; x++) {
-              for (var y = 0; y < 720; y++) {
-
-              }
-            }
-            */
           }
         }
       }
