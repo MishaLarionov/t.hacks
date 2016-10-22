@@ -9,18 +9,22 @@ var restclient = require('node-rest-client').Client;
 restclient = new restclient();
 
 function getCoords(input) {
-  return Wolfram.query(input + " coordinates", function(err, result) {
+  return(Wolfram.query(input + " coordinates", function(err, result) {
     if(err)
       console.log(err);
     else {
-      for(var a=0; a<result.queryresult.pod.length; a++) {
-        var pod = result.queryresult.pod[a];
-        if (pod.$.title == "Result") {
-          return pod.subpod.plaintext;
+      if (result.queryresult.didyoumeans) {
+        return("Did you mean: " + result.queryresult.didyoumeans.didyoumean.replace(' coordinates',''););
+      } else {
+        for(var a=0; a<result.queryresult.pod.length; a++) {
+          var pod = result.queryresult.pod[a];
+          if (pod.$.title == "Result") {
+            return(pod.subpod.plaintext);
+          }
         }
       }
     }
-  });
+  }));
 }
 
 app.use(express.static(__dirname + '/public'));
@@ -35,4 +39,10 @@ app.get('/', function(req, res) {
 });
 app.post('/where', function(req, res) {
   var location = req.body.where;
+  var apiResult = getCoords(location);
+  if (apiResult.startsWith("Did you mean")) {
+    //Nothing worked
+  } else {
+    //It worked
+  }
 });
