@@ -14,7 +14,7 @@ function getCoords(input) {
       console.log(err);
     else {
       if (result.queryresult.didyoumeans) {
-        return("Did you mean: " + result.queryresult.didyoumeans.didyoumean.replace(' coordinates',''););
+        return("Did you mean: " + result.queryresult.didyoumeans.didyoumean.replace(' coordinates',''));
       } else {
         for(var a=0; a<result.queryresult.pod.length; a++) {
           var pod = result.queryresult.pod[a];
