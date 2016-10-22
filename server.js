@@ -14,7 +14,7 @@ var app = express();
 var restclient = require('node-rest-client').Client;
 restclient = new restclient();
 
-function getCoords(input) {
+function getCoords(input, res) {
   return(Wolfram.query(input + " coordinates", function(err, result) {
     if (err)
       console.log(err);
@@ -47,19 +47,24 @@ function getCoords(input) {
             }
             formattedcoords = formattedcoords.toString();
             console.log(formattedcoords);
-            var redChannel, greenChannel, blueChannel;
+            var blueChannel;
             restclient.get("https://api.skywatch.co/data/time/2016/location/" + formattedcoords + "/source/landsat-8/level/1/cloudcover/5/band/green", {headers: {"x-api-key": process.env.SKYWATCH_KEY}}, function (data, response) {
               console.log(data);
               request.get(data[0].download_path, function (error, response, body) {
+                console.log("downloaded");
                 if (!error && response.statusCode == 200) {
+                  console.log("200");
                   blueChannel = new Buffer(body);
+                  console.log("buffered");
+                  Jimp.read(blueChannel, function (err, image) {
+                    console.log("read");
+                    image.resize(1280, 720);
+                    console.log("bam, resized");
+                    res.write(image.getBuffer(Jimp.MIME_JPEG));
+                    console.log("written");
+                  });
                 }
               });
-            });
-            var id = Math.floor(Math.random() * 100);
-            Jimp.read(blueChannel, function (err, image) {
-              image.resize(1280, 720);
-              res.write(image.getBuffer(Jimp.MIME_JPEG));
             });
           }
         }
@@ -80,5 +85,5 @@ app.get('/', function(req, res) {
 });
 app.post('/where', function(req, res) {
   var location = req.body.where;
-  getCoords(location);
+  getCoords(location, res);
 });
