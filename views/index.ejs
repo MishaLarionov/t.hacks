@@ -1,25 +1,70 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
+    <!-- Change the directory of the favicon for the server -->
+    <link rel="icon" href="C:\Users\samya\Documents\t.hacks\images\logo.png">
     <title>SatImage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#009688">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="manifest" href="manifest.json">
-  </head>
-  <body>
-    <h1>BYE ELON!</h1>
-    <form action="/where" method="post">
-      <input type="text" placeholder="Where?" name="where" />
-      <input type="submit" value="Submit" />
-    </form>
-    <p>Objectives:</p>
-    <ul>
-      <li>background</li>
-      <li>delete this list</li>
-    </ul>
-    <a href="https://www.youtube.com/watch?v=XubTAFdHPig"target="_blank">Test</a>
-    <img src="https://i.imgflip.com/14yde9.jpg"/>
-  </body>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.teal-amber.min.css" />
+    <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+    <style>
+        .demo-layout-transparent {
+            background: url('http://65.media.tumblr.com/d5cc5cfe4f36b194a920ec124cf57ba2/tumblr_nkq17ovyEF1tr508go1_1280.jpg') center / cover;
+        }
+        .demo-layout-transparent .mdl-layout__header,
+        .demo-layout-transparent .mdl-layout__drawer-button {
+            /* This background is dark, so we set text to white. Use 87% black instead if
+               your background is light. */
+            color: white;
+        }
+        .title {
+            font-size: 2.5em;
+        }
+        .centre {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title title">Satellite Image Club</span>
+
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Home</a>
+                <a class="mdl-navigation__link" href="">About</a>
+                <a class="mdl-navigation__link" href="">History</a>
+                <a class="mdl-navigation__link" href="">Our Vision</a>
+            </nav>
+        </div>
+    </header>
+    <div style="background: rgba(0,0,0,0.75); width: 100%; height: 10%; margin-top: -65px">dsdsd</div>
+
+    <main class="mdl-layout__content">
+        <div class="centre">
+            <form action="/where" method="post">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Enter the adress for your wallpaper:</label>
+                </div>
+                <input class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" type="submit" value="Submit" />
+            </form>
+        </div>
+    </main>
+</div>
+</body>
 </html>
