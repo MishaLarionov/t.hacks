@@ -1,6 +1,8 @@
 var Client = require('node-wolfram');
 var Wolfram = new Client(process.env.WOLFRAM_KEY);
 
+var jpeg = require('jpeg-js');
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -39,9 +41,17 @@ function getCoords(input) {
             }
             formattedcoords = formattedcoords.toString();
             console.log(formattedcoords);
-            restclient.get("https://api.skywatch.co/data/time/2016-07/location/" + formattedcoords + "/source/landsat-8/level/3/cloudcover/0/band/red,green,blue", {headers: {"x-api-key": process.env.SKYWATCH_KEY}}, function (data, response) {
+            restclient.get("https://api.skywatch.co/data/time/2016-07/location/" + formattedcoords + "/source/landsat-8/level/3/cloudcover/0/band/red", {headers: {"x-api-key": process.env.SKYWATCH_KEY}}, function (data, response) {
               console.log(data);
-              console.log(data[0].download_path);
+              var redChannel = fs.readFileSync(data[0].download_path);
+            });
+            restclient.get("https://api.skywatch.co/data/time/2016-07/location/" + formattedcoords + "/source/landsat-8/level/3/cloudcover/0/band/green", {headers: {"x-api-key": process.env.SKYWATCH_KEY}}, function (data, response) {
+              console.log(data);
+              var greenChannel = fs.readFileSync(data[0].download_path);
+            });
+            restclient.get("https://api.skywatch.co/data/time/2016-07/location/" + formattedcoords + "/source/landsat-8/level/3/cloudcover/0/band/blue", {headers: {"x-api-key": process.env.SKYWATCH_KEY}}, function (data, response) {
+              console.log(data);
+              var blueChannel = fs.readFileSync(data[0].download_path);
             });
           }
         }
