@@ -40,6 +40,7 @@ app.get('/', function(req, res) {
 app.post('/where', function(req, res) {
   var location = req.body.where;
   var apiResult = getCoords(location);
+  console.log(apiResult);
   if (apiResult.startsWith("Did you mean")) {
     //Nothing worked
   } else {
